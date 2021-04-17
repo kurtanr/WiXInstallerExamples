@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="DD475EBC-D960-4AF4-BB8A-BE91FA942756"
+           Language="1033"
+           Manufacturer="Acme Corporation"
+           Name="Hello World"
+           Version="1.0.0.0">
+
+    <Package InstallScope="perMachine" />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Hello World Installation Folder">
+          <Component Id="ProductComponent">
+            <File KeyPath="yes" Source="FileToInstall.txt"></File>
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="HelloWorldFeature">
+      <ComponentRef Id="ProductComponent" />
+    </Feature>
+
+  </Product>
+</Wix>

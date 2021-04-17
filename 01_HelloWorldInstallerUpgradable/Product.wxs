@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Language="1033"
+           Manufacturer="Acme Corporation"
+           Name="01_HelloWorldInstallerUpgradable"
+           UpgradeCode="B28B3FA8-9310-4AA7-B0CA-CBCCA5FD00B2"
+           Version="1.0.0.0">
+
+    <Package InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="01_HelloWorldInstallerUpgradable">
+          <Component Id="ProductComponent">
+            <File KeyPath="yes" Source="FileToInstall.txt"></File>
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="HelloWorldFeature">
+      <ComponentRef Id="ProductComponent" />
+    </Feature>
+
+  </Product>
+</Wix>
