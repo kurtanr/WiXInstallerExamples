@@ -1,6 +1,6 @@
 # WiX Installer Examples
 
-[![License](https://img.shields.io/github/license/kurtanr/WixInstallerExamples.svg)](https://github.com/kurtanr/WixInstallerExamples/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/kurtanr/WiXInstallerExamples.svg)](https://github.com/kurtanr/WixInstallerExamples/blob/master/LICENSE)
 
 WiX (Windows Installer XML) is a framework that lets developers create installers (MSIs) for Windows.\
 The Repository contains multiple sample installers which demonstrate how to achieve various tasks using WiX.\
