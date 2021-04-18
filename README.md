@@ -47,6 +47,7 @@ Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/
 |--------------------|-------------|
 |[00_HelloWorldInstaller](00_HelloWorldInstaller/) | - minimum installer, not upgradable</br>- does not use [wixproj](https://wixtoolset.org/documentation/manual/v3/msbuild/authoring_first_msbuild_project.html) |
 |[01_HelloWorldInstallerUpgradable](01_HelloWorldInstallerUpgradable/) | - minimum installer, upgradable, no ICE warnings</br>- uses wixproj |
+|[02_x86_x64_Installer](02_x86_x64_Installer/) | - single wxs file used for building x86 and x64 MSI</br>- x86 and x64 MSI deploy different files and write to different registry locations |
 
 ## TODO: Planned examples
 
