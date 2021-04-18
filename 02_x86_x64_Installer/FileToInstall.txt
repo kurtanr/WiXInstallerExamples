@@ -1,0 +1,1 @@
+Installed both with x64 and x86 installer.

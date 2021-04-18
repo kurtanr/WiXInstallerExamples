@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include PlatformDependentVariables.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Language="1033"
+           Manufacturer="Acme Corporation"
+           Name="$(var.PlatformProductName)"
+           UpgradeCode="$(var.PlatformUpgradeCode)"
+           Version="1.0.0.0">
+
+    <Package InstallScope="perMachine" Compressed="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="$(var.PlatformProgramFilesFolder)">
+        <Directory Id="INSTALLFOLDER" Name="02_x86_x64_Installer">
+          <Component Id="ProductComponent" Guid="3F6B1349-783B-41AE-829C-BDF702E04EC3">
+            <RegistryKey Root='HKLM' Key='Software\[Manufacturer]\[ProductName]'>
+              <RegistryValue Type='string' Name='Install location' Value='[INSTALLFOLDER]' />
+            </RegistryKey>
+            <File Source="FileToInstall.txt" />
+            <?if $(var.Platform) = x64?>
+              <File KeyPath="yes" Source="my_x64.dll" />
+            <?else?>
+              <File KeyPath="yes" Source="my_x86.dll" />
+            <?endif?>
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="HelloWorldFeature">
+      <ComponentRef Id="ProductComponent" />
+    </Feature>
+
+  </Product>
+</Wix>

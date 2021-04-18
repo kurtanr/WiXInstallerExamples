@@ -50,10 +50,10 @@ Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/
 
 ## TODO: Planned examples
 
-- x86 and x64 installers
 - passing parameters to MSI
 - remembering MSI parameters in case of upgrade and repair
 - executing custom installer actions
+- adding UI
 </br>
 
 ## Additional reading

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?if $(var.Platform) = x64 ?>
+    <?define PlatformProductName = "02_x86_x64_Installer (x64)" ?>
+    <?define PlatformUpgradeCode = "1AB189BA-5B13-4448-A916-4E25B814D2AA" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?else ?>
+    <?define PlatformProductName = "02_x86_x64_Installer (x86)" ?>
+    <?define PlatformUpgradeCode = "1F633E9D-7F55-449D-8BC9-56F9E72342E8" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?endif ?>
+</Include>

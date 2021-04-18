@@ -5,16 +5,30 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "01_HelloWorldInstallerUpgradable", "01_HelloWorldInstallerUpgradable\01_HelloWorldInstallerUpgradable.wixproj", "{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "02_x86_x64_Installer", "02_x86_x64_Installer\02_x86_x64_Installer.wixproj", "{6EE89493-4340-4387-B276-80F751DA40BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}.Debug|x64.ActiveCfg = Debug|x86
 		{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}.Debug|x86.ActiveCfg = Debug|x86
 		{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}.Debug|x86.Build.0 = Debug|x86
+		{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}.Release|x64.ActiveCfg = Release|x86
 		{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}.Release|x86.ActiveCfg = Release|x86
 		{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}.Release|x86.Build.0 = Release|x86
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Debug|x64.ActiveCfg = Debug|x64
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Debug|x64.Build.0 = Debug|x64
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Debug|x86.ActiveCfg = Debug|x86
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Debug|x86.Build.0 = Debug|x86
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Release|x64.ActiveCfg = Release|x64
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Release|x64.Build.0 = Release|x64
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Release|x86.ActiveCfg = Release|x86
+		{6EE89493-4340-4387-B276-80F751DA40BA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
