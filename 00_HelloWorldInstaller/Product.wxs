@@ -6,7 +6,7 @@
            Name="Hello World"
            Version="1.0.0.0">
 
-    <Package InstallScope="perMachine" />
+    <Package InstallScope="perMachine" Compressed="yes" />
 
     <MediaTemplate EmbedCab="yes" />
 

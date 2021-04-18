@@ -2,10 +2,15 @@
 
 ## Building installer
 
-To build [minimum installer](Product.wxs) run:
+To build [minimum installer](Product.wxs) run in PowerShell:
 ```PowerShell
 .\DownloadAndExtractWix.ps1
 .\BuildInstaller.ps1
+```
+
+If execution of PowerShell scripts is not allowed, it can be enabled by calling (as Administrator):
+```PowerShell
+Set-ExecutionPolicy RemoteSigned
 ```
 
 ## Minimum installer elements
@@ -49,14 +54,18 @@ Describes the software the installer is installing.
 ### [Package](https://wixtoolset.org/documentation/manual/v3/xsd/wix/package.html)
 
 Describes the installer itself.\
-The element itself is mandatory, but none of its attributes are mandatory - the example sets only one attribute - InstallScope.\
+The element itself is mandatory, but none of its attributes are mandatory - the example sets only two attributes - InstallScope and Compressed.\
 With only these two elements, the installer can be compiled, but trying to install it will result in nothing being installed.
 
 ```xml
-    <Package InstallScope="perMachine" />
+    <Package InstallScope="perMachine" Compressed="yes" />
 ```
 - **InstallScope**
   - set to *perUser* if installer does not require elevated privileges to install (set to *perMachine* if it does)
+- **Compressed**
+  - if not set, the default is "no"
+  - if not set or set to "no", files installed by the MSI are distributed alongside the MSI
+  - if set to "yes", files installed by the MSI are contained inside the MSI
 
 ### [MediaTemplate](https://wixtoolset.org/documentation/manual/v3/xsd/wix/mediatemplate.html)
 

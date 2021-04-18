@@ -7,7 +7,7 @@
            UpgradeCode="B28B3FA8-9310-4AA7-B0CA-CBCCA5FD00B2"
            Version="1.0.0.0">
 
-    <Package InstallScope="perMachine" />
+    <Package InstallScope="perMachine" Compressed="yes" />
 
     <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
 
