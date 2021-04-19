@@ -16,24 +16,30 @@
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="$(var.PlatformProgramFilesFolder)">
-        <Directory Id="INSTALLFOLDER" Name="02_x86_x64_Installer">
-          <Component Id="ProductComponent" Guid="3F6B1349-783B-41AE-829C-BDF702E04EC3">
-            <RegistryKey Root='HKLM' Key='Software\[Manufacturer]\[ProductName]'>
-              <RegistryValue Type='string' Name='Install location' Value='[INSTALLFOLDER]' />
-            </RegistryKey>
-            <File Source="FileToInstall.txt" />
-            <?if $(var.Platform) = x64?>
-              <File KeyPath="yes" Source="my_x64.dll" />
-            <?else?>
-              <File KeyPath="yes" Source="my_x86.dll" />
-            <?endif?>
-          </Component>
-        </Directory>
+        <Directory Id="INSTALLFOLDER" Name="02_x86_x64_Installer" />
       </Directory>
     </Directory>
 
+    <ComponentGroup Directory="INSTALLFOLDER" Id="ProductComponentGroup">
+      <Component Id="cmp_FileToInstall.txt" Guid="*">
+        <File KeyPath="yes" Source="FileToInstall.txt" />
+      </Component>
+      <Component Id="cmp_my.dll" Guid="*">
+        <?if $(var.Platform) = x64?>
+          <File KeyPath="yes" Source="my_x64.dll" />
+        <?else?>
+          <File KeyPath="yes" Source="my_x86.dll" />
+        <?endif?>
+      </Component>
+      <Component Id="cmp_RegistryEntry" Guid="*">
+        <RegistryKey Root='HKLM' Key='Software\[Manufacturer]\[ProductName]'>
+          <RegistryValue KeyPath='yes' Type='string' Name='Install location' Value='[INSTALLFOLDER]' />
+        </RegistryKey>
+      </Component>
+    </ComponentGroup>
+
     <Feature Id="HelloWorldFeature">
-      <ComponentRef Id="ProductComponent" />
+      <ComponentGroupRef Id="ProductComponentGroup" />
     </Feature>
 
   </Product>

@@ -13,7 +13,7 @@
 
 - we want to have both an x86 and an x64 installer for our product
 - some files are deployed by both installers (e.g. *FileToInstall.txt*)
-- installers should have different UpgradeCodes
+- installers should have different UpgradeCodes (should be possible to upgrade them independently)
 - MSI file name should end with either "(x64)" or "(x86)" based on the platform
 - MSI entry in Windows "Programs and Features" should end with either "(x64)" or "(x86)" based the on platform
 - x86 installer
@@ -24,6 +24,7 @@
   - deploys *my_x64.dll*
   - by default is installed in the 64-bit program files folder
   - writes registry keys in `HKEY_LOCAL_MACHINE\SOFTWARE`
+- it should be possible to install both installers on the same machine at the same time
 
 ## Implementation of requirements
 
