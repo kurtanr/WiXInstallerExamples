@@ -83,7 +83,7 @@ Media element should be used when we want to split the installer into multiple f
 ### [Directory](https://wixtoolset.org/documentation/manual/v3/xsd/wix/directory.html)
 
 Represents a directory that will be created by the installer, in which case **Name** and **Id** properties must be set.\
-Or it represents [one of the predefined directories](https://docs.microsoft.com/hr-hr/windows/win32/msi/property-reference?redirectedfrom=MSDN#system-folder-properties) 
+Or it represents [one of the predefined directories](https://docs.microsoft.com/en-us/windows/win32/msi/property-reference?redirectedfrom=MSDN#system-folder-properties) 
 (e.g. ProgramFilesFolder), in which case only **Id** property must be set.
 
 Directory structure must start with:
@@ -91,8 +91,8 @@ Directory structure must start with:
     <Directory Id="TARGETDIR" Name="SourceDir">
 ```
 
-During an install, [TARGETDIR](https://docs.microsoft.com/hr-hr/windows/win32/msi/targetdir) will default to the largest drive on the machine.\
-[SourceDir](https://docs.microsoft.com/hr-hr/windows/win32/msi/sourcedir) will be set to the location where the MSI is being executed.\
+During an install, [TARGETDIR](https://docs.microsoft.com/en-us/windows/win32/msi/targetdir) will default to the largest drive on the machine.\
+[SourceDir](https://docs.microsoft.com/en-us/windows/win32/msi/sourcedir) will be set to the location where the MSI is being executed.\
 Explanation from Rob Mensching why this is needed can be found [here](https://stackoverflow.com/a/2145075).
 
 Directory structure used in the installer:
@@ -122,7 +122,7 @@ According to [this article](https://wixtoolset.org/documentation/manual/v3/howto
 - every component must have a unique GUID
 - failure to follow these two basic rules can lead to many problems
 
-Some of the problems that can occur are [described here](https://docs.microsoft.com/hr-hr/windows/win32/msi/what-happens-if-the-component-rules-are-broken).
+Some of the problems that can occur are [described here](https://docs.microsoft.com/en-us/windows/win32/msi/what-happens-if-the-component-rules-are-broken).
 
 ### [File](https://wixtoolset.org/documentation/manual/v3/xsd/wix/file.html)
 

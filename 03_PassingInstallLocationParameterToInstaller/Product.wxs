@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Language="1033"
+           Manufacturer="Acme Corporation"
+           Name="03_PassingInstallLocationParameterToInstaller"
+           UpgradeCode="{5903552B-DDE6-45B5-BAC6-A28208C8DF81}"
+           Version="1.0.0.0">
+
+    <Package InstallScope="perMachine" InstallerVersion="200" Compressed="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Property Id="MY_PROPERTY" Value="default value" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MY_INSTALL_LOCATION" Name="03_PassingInstallLocationParameterToInstaller" />
+      </Directory>
+    </Directory>
+
+    <ComponentGroup Directory="MY_INSTALL_LOCATION" Id="ProductComponentGroup">
+      <Component Id="ProductComponent">
+        <File KeyPath="yes" Source="FileToInstall.txt"></File>
+      </Component>
+      <Component Id="cmp_RegistryEntry" Guid="*">
+        <RegistryKey Root='HKLM' Key='Software\[Manufacturer]\[ProductName]'>
+          <RegistryValue KeyPath='yes' Type='string' Name='My property' Value='[MY_PROPERTY]' />
+        </RegistryKey>
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="HelloWorldFeature">
+      <ComponentGroupRef Id="ProductComponentGroup" />
+    </Feature>
+
+  </Product>
+</Wix>
