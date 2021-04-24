@@ -9,6 +9,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "02_x86_x64_Installer", "02_
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "03_PassingInstallLocationParameterToInstaller", "03_PassingInstallLocationParameterToInstaller\03_PassingInstallLocationParameterToInstaller.wixproj", "{1CCA81E4-CFC0-468D-A828-FC303252D75D}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "04_PowerShellPreconditionCustomAction", "04_PowerShellPreconditionCustomAction\04_PowerShellPreconditionCustomAction.wixproj", "{3547E010-8EED-4417-8087-C21F148EABF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -37,6 +39,12 @@ Global
 		{1CCA81E4-CFC0-468D-A828-FC303252D75D}.Release|x64.ActiveCfg = Release|x86
 		{1CCA81E4-CFC0-468D-A828-FC303252D75D}.Release|x86.ActiveCfg = Release|x86
 		{1CCA81E4-CFC0-468D-A828-FC303252D75D}.Release|x86.Build.0 = Release|x86
+		{3547E010-8EED-4417-8087-C21F148EABF6}.Debug|x64.ActiveCfg = Debug|x86
+		{3547E010-8EED-4417-8087-C21F148EABF6}.Debug|x86.ActiveCfg = Debug|x86
+		{3547E010-8EED-4417-8087-C21F148EABF6}.Debug|x86.Build.0 = Debug|x86
+		{3547E010-8EED-4417-8087-C21F148EABF6}.Release|x64.ActiveCfg = Release|x86
+		{3547E010-8EED-4417-8087-C21F148EABF6}.Release|x86.ActiveCfg = Release|x86
+		{3547E010-8EED-4417-8087-C21F148EABF6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

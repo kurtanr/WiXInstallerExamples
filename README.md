@@ -49,11 +49,12 @@ Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/
 |[01_HelloWorldInstallerUpgradable](01_HelloWorldInstallerUpgradable/) | - minimum installer, upgradable, no ICE warnings</br>- uses wixproj |
 |[02_x86_x64_Installer](02_x86_x64_Installer/) | - single wxs file used for building x86 and x64 MSI</br>- x86 and x64 MSI deploy different files and write to different registry locations |
 |[03_PassingInstallLocationParameterToInstaller](03_PassingInstallLocationParameterToInstaller/) | - passing parameters to installer using msiexec</br>- analyzing installation log and using the Orca MSI Editor |
+|[04_PowerShellPreconditionCustomAction](04_PowerShellPreconditionCustomAction/) | - checking precondition for installation (is PowerShell installed)</br>- overview of install stages</br>- executing PowerShell script as custom action |
 
 ## TODO: Planned examples
 
 - remembering MSI parameters in case of upgrade and repair
-- executing custom installer actions
+- executing custom C# installer actions
 - adding UI
 </br>
 
