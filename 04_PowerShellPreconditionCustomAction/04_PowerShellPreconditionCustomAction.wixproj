@@ -5,9 +5,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>1cca81e4-cfc0-468d-a828-fc303252d75d</ProjectGuid>
+    <ProjectGuid>3547e010-8eed-4417-8087-c21f148eabf6</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>03_PassingInstallLocationParameterToInstaller</OutputName>
+    <OutputName>04_PowerShellPreconditionCustomAction</OutputName>
     <OutputType>Package</OutputType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -28,7 +28,14 @@
     <None Include="FileToInstall.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="MyAppendScript.ps1" />
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />

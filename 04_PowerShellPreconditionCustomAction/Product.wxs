@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Language="1033"
+           Manufacturer="Acme Corporation"
+           Name="04_PowerShellPreconditionCustomAction"
+           UpgradeCode="{FFA6A5DE-5551-4A45-B3B5-0C2F78E605AF}"
+           Version="1.0.0.0">
+
+    <Package InstallScope="perMachine" InstallerVersion="200" Compressed="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Property Id="POWERSHELLVERSION">
+      <RegistrySearch Id="POWERSHELLVERSION"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
+                      Name="PowerShellVersion" />
+    </Property>
+
+    <Property Id="POWERSHELLEXE">
+      <RegistrySearch Id="POWERSHELLEXE"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell"
+                      Name="Path" />
+    </Property>
+
+    <Condition Message="You must have PowerShell 3.0 or higher.">
+      <![CDATA[Installed OR (POWERSHELLEXE AND POWERSHELLVERSION >= "3.0")]]>
+    </Condition>
+
+    <Property Id="MY_PROPERTY" Value="default value" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MY_INSTALL_LOCATION" Name="04_PowerShellPreconditionCustomAction" />
+      </Directory>
+    </Directory>
+
+    <ComponentGroup Directory="MY_INSTALL_LOCATION" Id="ProductComponentGroup">
+      <Component Id="cmp_FileToInstall_txt">
+        <File KeyPath="yes" Source="FileToInstall.txt"></File>
+      </Component>
+      <Component Id="cmp_MyAppendScript_ps1">
+        <File KeyPath="yes" Source="MyAppendScript.ps1"></File>
+      </Component>
+      <Component Id="cmp_RegistryEntry" Guid="*">
+        <RegistryKey Root='HKLM' Key='Software\[Manufacturer]\[ProductName]'>
+          <RegistryValue KeyPath='yes' Type='string' Name='My property' Value='[MY_PROPERTY]' />
+        </RegistryKey>
+      </Component>
+    </ComponentGroup>
+
+    <SetProperty Id="CA_AppendTextUsingPowerShell"
+                 Before ="CA_AppendTextUsingPowerShell"
+                 Sequence="execute"
+                 Value='&quot;[POWERSHELLEXE]&quot; -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -File "[MY_INSTALL_LOCATION]MyAppendScript.ps1" -propertyValue "[MY_PROPERTY]"' />
+
+    <CustomAction Id="CA_AppendTextUsingPowerShell"
+                  BinaryKey="WixCA"
+                  DllEntry="WixQuietExec"
+                  Execute="deferred"
+                  Return="check"
+                  Impersonate="no" />
+
+    <InstallExecuteSequence>
+      <Custom Action='CA_AppendTextUsingPowerShell' After='InstallFiles'>NOT Installed AND NOT WIX_UPGRADE_DETECTED</Custom>
+    </InstallExecuteSequence>
+
+    <Feature Id="HelloWorldFeature">
+      <ComponentGroupRef Id="ProductComponentGroup" />
+    </Feature>
+
+  </Product>
+</Wix>
