@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!--Taken from: https://gist.github.com/dander/8408382-->
+  <SetProperty Id="FirstInstall" After="FindRelatedProducts" Value="true">
+    NOT Installed AND NOT WIX_UPGRADE_DETECTED AND NOT WIX_DOWNGRADE_DETECTED
+  </SetProperty>
+
+  <SetProperty Id="Upgrading" After="SetFirstInstall" Value="true">
+    WIX_UPGRADE_DETECTED AND NOT (REMOVE="ALL")
+  </SetProperty>
+
+  <SetProperty Id="RemovingForUpgrade" After="RemoveExistingProducts" Sequence="execute" Value="true">
+    (REMOVE="ALL") AND UPGRADINGPRODUCTCODE
+  </SetProperty>
+
+  <SetProperty Id="Uninstalling" After="SetUpgrading" Value="true">
+    Installed AND (REMOVE="ALL") AND NOT (WIX_UPGRADE_DETECTED OR UPGRADINGPRODUCTCODE)
+  </SetProperty>
+
+  <SetProperty Id="Maintenance" After="SetUninstalling" Value="true">
+    Installed AND NOT Upgrading AND NOT Uninstalling AND NOT UPGRADINGPRODUCTCODE
+  </SetProperty>
+</Include>

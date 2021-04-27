@@ -75,4 +75,4 @@ Orca is available as part of [Windows SDK](https://docs.microsoft.com/en-us/wind
 
 Upgrade, repair and uninstall of MSI are usually not initiated by calling the MSI directly and passing parameters to it.\
 Still, sometimes it might be needed to access property values (passed to the MSI during initial installation) at the time of upgrade, repair or uninstall.\
-This is something that does not work in the current example but will be supported in the next example.
+This is something that does not work in the current example but will be supported in the [next example](../05_RememberPropertyPattern/).
