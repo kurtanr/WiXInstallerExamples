@@ -54,7 +54,7 @@ Next, we need to define and schedule custom actions.\
 Every custom action will do the same thing - call [MyAppendScript.ps1](MyAppendScript.ps1) which will log property values in the *InstallationStages.txt* file.\
 This file is created after installation, so uninstallation will not remove it.
 Scheduling of actions is done during the InstallExecuteSequence:
-```
+```xml
     <InstallExecuteSequence>
       <Custom Action='CA_AppendTextUsingPowerShell_FirstInstall' Before='InstallFinalize'>FirstInstall</Custom>
       <Custom Action='CA_AppendTextUsingPowerShell_Upgrading' Before='InstallFinalize'>Upgrading</Custom>
@@ -117,4 +117,4 @@ MSI (c) (C8:EC) [11:00:10:208]: PROPERTY CHANGE: Modifying MY_PROPERTY property.
 Property(N): MY_PROPERTY = my_value
 ```
 The current simple solution for remembering property values (which has this problem) might be enough for most of the installers.\
-If not, the next example fixes this issue with a full implementation of the "Remember Property" pattern.
+If not, the [next example](../06_RememberPropertyPatternComplete/) fixes this issue with a full implementation of the "Remember Property" pattern.
