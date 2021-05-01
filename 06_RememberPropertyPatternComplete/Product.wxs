@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Language="1033"
+           Manufacturer="Acme Corporation"
+           Name="06_RememberPropertyPatternComplete"
+           UpgradeCode="{FADD5623-AEE9-4388-9023-93895EEE6C96}"
+           Version="1.0.0.0">
+
+    <Package InstallScope="perMachine" InstallerVersion="200" Compressed="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <?include InstallationStages.wxi?>
+
+    <Property Id="POWERSHELLVERSION">
+      <RegistrySearch Id="POWERSHELLVERSION"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
+                      Name="PowerShellVersion" />
+    </Property>
+
+    <Property Id="POWERSHELLEXE">
+      <RegistrySearch Id="POWERSHELLEXE"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell"
+                      Name="Path" />
+    </Property>
+
+    <Condition Message="You must have PowerShell 3.0 or higher.">
+      <![CDATA[Installed OR (POWERSHELLEXE AND POWERSHELLVERSION >= "3.0")]]>
+    </Condition>
+
+    <Property Id="MY_PROPERTY" Value="default value" Secure="yes">
+      <RegistrySearch Id='RegSearch_MY_PROPERTY'
+                      Root='HKLM'
+                      Key='Software\[Manufacturer]\[ProductName]'
+                      Name='My property'
+                      Type='raw' />
+    </Property>
+
+    <CustomAction Id='SaveCmdLineValue_MY_PROPERTY' Property='CMDLINE_MY_PROPERTY' Value='[MY_PROPERTY]' Execute='firstSequence' />
+    <CustomAction Id='SetFromCmdLineValue_MY_PROPERTY' Property='MY_PROPERTY' Value='[CMDLINE_MY_PROPERTY]' Execute='firstSequence' />
+    <InstallUISequence>
+      <Custom Action='SaveCmdLineValue_MY_PROPERTY' Before='AppSearch' />
+      <Custom Action='SetFromCmdLineValue_MY_PROPERTY' After='AppSearch'>
+        <![CDATA[CMDLINE_MY_PROPERTY AND (CMDLINE_MY_PROPERTY <> "default value")]]>
+      </Custom>
+    </InstallUISequence>
+    <InstallExecuteSequence>
+      <Custom Action='SaveCmdLineValue_MY_PROPERTY' Before='AppSearch' />
+      <Custom Action='SetFromCmdLineValue_MY_PROPERTY' After='AppSearch'>
+        <![CDATA[CMDLINE_MY_PROPERTY AND (CMDLINE_MY_PROPERTY <> "default value")]]>
+      </Custom>
+    </InstallExecuteSequence>
+
+    <Property Id="MY_INSTALL_LOCATION" Secure="yes">
+      <RegistrySearch Id='RegSearch_MY_INSTALL_LOCATION'
+                      Root='HKLM'
+                      Key='Software\[Manufacturer]\[ProductName]'
+                      Name='My install location'
+                      Type='raw' />
+    </Property>
+
+    <CustomAction Id='SaveCmdLineValue_MY_INSTALL_LOCATION' Property='CMDLINE_MY_INSTALL_LOCATION' Value='[MY_INSTALL_LOCATION]' Execute='firstSequence' />
+    <CustomAction Id='SetFromCmdLineValue_MY_INSTALL_LOCATION' Property='MY_INSTALL_LOCATION' Value='[CMDLINE_MY_INSTALL_LOCATION]' Execute='firstSequence' />
+    <InstallUISequence>
+      <Custom Action='SaveCmdLineValue_MY_INSTALL_LOCATION' Before='AppSearch' />
+      <Custom Action='SetFromCmdLineValue_MY_INSTALL_LOCATION' After='AppSearch'>
+        CMDLINE_MY_INSTALL_LOCATION
+      </Custom>
+    </InstallUISequence>
+    <InstallExecuteSequence>
+      <Custom Action='SaveCmdLineValue_MY_INSTALL_LOCATION' Before='AppSearch' />
+      <Custom Action='SetFromCmdLineValue_MY_INSTALL_LOCATION' After='AppSearch'>
+        CMDLINE_MY_INSTALL_LOCATION
+      </Custom>
+    </InstallExecuteSequence>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MY_INSTALL_LOCATION" Name="06_RememberPropertyPatternComplete" />
+      </Directory>
+    </Directory>
+
+    <ComponentGroup Directory="MY_INSTALL_LOCATION" Id="ProductComponentGroup">
+      <Component Id="cmp_MyAppendScript_ps1">
+        <File KeyPath="yes" Source="MyAppendScript.ps1"></File>
+      </Component>
+      <Component Id="cmp_RegistryEntry_MY_PROPERTY" Guid="*">
+        <RegistryKey Root='HKLM' Key='Software\[Manufacturer]\[ProductName]'>
+          <RegistryValue KeyPath='yes' Type='string' Name='My property' Value='[MY_PROPERTY]' />
+        </RegistryKey>
+      </Component>
+      <Component Id="cmp_RegistryEntry_MY_INSTALL_LOCATION" Guid="*">
+        <RegistryKey Root='HKLM' Key='Software\[Manufacturer]\[ProductName]'>
+          <RegistryValue KeyPath='yes' Type='string' Name='My install location' Value='[MY_INSTALL_LOCATION]' />
+        </RegistryKey>
+      </Component>
+    </ComponentGroup>
+
+    <SetProperty Id="CA_AppendTextUsingPowerShell_FirstInstall"
+                 Before ="CA_AppendTextUsingPowerShell_FirstInstall"
+                 Sequence="execute"
+                 Value='&quot;[POWERSHELLEXE]&quot; -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -File "[MY_INSTALL_LOCATION]MyAppendScript.ps1" -installationStage FirstInstall -propertyValue "[MY_PROPERTY]" -version "[ProductVersion]" -installLocation "[MY_INSTALL_LOCATION] "' />
+
+    <SetProperty Id="CA_AppendTextUsingPowerShell_Upgrading"
+                 Before ="CA_AppendTextUsingPowerShell_Upgrading"
+                 Sequence="execute"
+                 Value='&quot;[POWERSHELLEXE]&quot; -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -File "[MY_INSTALL_LOCATION]MyAppendScript.ps1" -installationStage Upgrading -propertyValue "[MY_PROPERTY]" -version "[ProductVersion]" -installLocation "[MY_INSTALL_LOCATION] "' />
+
+    <SetProperty Id="CA_AppendTextUsingPowerShell_Uninstalling"
+                 Before ="CA_AppendTextUsingPowerShell_Uninstalling"
+                 Sequence="execute"
+                 Value='&quot;[POWERSHELLEXE]&quot; -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -File "[MY_INSTALL_LOCATION]MyAppendScript.ps1" -installationStage Uninstalling -propertyValue "[MY_PROPERTY]" -version "[ProductVersion]" -installLocation "[MY_INSTALL_LOCATION] "' />
+
+    <SetProperty Id="CA_AppendTextUsingPowerShell_Maintenance"
+                 Before ="CA_AppendTextUsingPowerShell_Maintenance"
+                 Sequence="execute"
+                 Value='&quot;[POWERSHELLEXE]&quot; -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -File "[MY_INSTALL_LOCATION]MyAppendScript.ps1" -installationStage Maintenance -propertyValue "[MY_PROPERTY]" -version "[ProductVersion]" -installLocation "[MY_INSTALL_LOCATION] "' />
+
+    <CustomAction Id="CA_AppendTextUsingPowerShell_FirstInstall" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="check" Impersonate="no" />
+    <CustomAction Id="CA_AppendTextUsingPowerShell_Upgrading" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="check" Impersonate="no" />
+    <CustomAction Id="CA_AppendTextUsingPowerShell_Uninstalling" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="check" Impersonate="no" />
+    <CustomAction Id="CA_AppendTextUsingPowerShell_Maintenance" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="check" Impersonate="no" />
+
+    <InstallExecuteSequence>
+      <Custom Action='CA_AppendTextUsingPowerShell_FirstInstall' Before='InstallFinalize'>FirstInstall</Custom>
+      <Custom Action='CA_AppendTextUsingPowerShell_Upgrading' Before='InstallFinalize'>Upgrading</Custom>
+      <Custom Action='CA_AppendTextUsingPowerShell_Uninstalling' Before='RemoveFiles'>Uninstalling</Custom>
+      <Custom Action='CA_AppendTextUsingPowerShell_Maintenance' Before='InstallFinalize'>Maintenance</Custom>
+    </InstallExecuteSequence>
+
+    <Feature Id="HelloWorldFeature">
+      <ComponentGroupRef Id="ProductComponentGroup" />
+    </Feature>
+
+  </Product>
+</Wix>
