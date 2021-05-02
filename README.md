@@ -52,10 +52,11 @@ Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/
 |[04_PowerShellPreconditionCustomAction](04_PowerShellPreconditionCustomAction/) | - checking precondition for installation (is PowerShell installed)</br>- overview of install stages</br>- executing PowerShell script as a custom action |
 |[05_RememberPropertyPattern](05_RememberPropertyPattern/) | - implementation of ["Remember Property" pattern](https://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)</br>- example of how to define custom actions that execute only during upgrade/repair/uninstall</br>- these actions are accessing properties set during the initial installation |
 |[06_RememberPropertyPatternComplete](06_RememberPropertyPatternComplete/) | - modification of the previous example to additionally support changing of property values during upgrade |
+|[07_CSharpCustomAction](07_CSharpCustomAction/) | - example of C# code executed as a custom action during installation (immediate and deferred) |
 
 ## TODO: Planned examples
 
-- executing custom C# / C++ installer actions
+- executing C++ installer actions
 - adding UI
 </br>
 
@@ -67,3 +68,4 @@ Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/
 - [Windows Installer Error Messages](https://docs.microsoft.com/en-us/windows/win32/msi/windows-installer-error-messages)
 - [MsiExec.exe and InstMsi.exe Error Messages](https://docs.microsoft.com/en-us/windows/win32/msi/error-codes)
 - [MsiExec.exe Command-Line Options](https://docs.microsoft.com/en-us/windows/win32/msi/command-line-options)
+- [WiX tricks and tips from StackOverflow](https://stackoverflow.com/a/577793/15770755)
