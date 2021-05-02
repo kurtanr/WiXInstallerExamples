@@ -1,5 +1,6 @@
 # WiX Installer Examples
 
+![msi-build](https://github.com/kurtanr/WiXInstallerExamples/actions/workflows/msi-build.yml/badge.svg)
 [![License](https://img.shields.io/github/license/kurtanr/WiXInstallerExamples.svg)](https://github.com/kurtanr/WixInstallerExamples/blob/master/LICENSE)
 
 WiX (Windows Installer XML) is a framework that lets developers create installers (MSIs) for Windows.\
