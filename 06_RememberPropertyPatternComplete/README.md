@@ -31,3 +31,8 @@ If we now repeat [Executing install/upgrade/repair/uninstall with previously def
 ```
 As seen from the result, property value is successfully changed during the upgrade.\
 NOTE: Properties cannot be changed during repair - according to [this](https://docs.microsoft.com/en-us/windows/win32/msi/command-line-options), the /f option "ignores any property values entered on the command line".
+
+## Additional reading
+
+- [Real-World Example: WiX/MSI Application Installer](https://helgeklein.com/blog/2014/09/real-world-example-wix-msi-application-installer/)\
+Sample installer that also implements Remember Property pattern

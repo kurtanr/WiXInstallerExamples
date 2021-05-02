@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\WiX.3.11.2\build\wix.props" Condition="Exists('..\packages\WiX.3.11.2\build\wix.props')" />
+  <Import Project="..\..\packages\WiX.3.11.2\build\wix.props" Condition="Exists('..\..\packages\WiX.3.11.2\build\wix.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>0d8125dc-3768-4a5b-abc4-aea32d977084</ProjectGuid>
+    <ProjectGuid>b2f847db-d7b0-4a8a-bc5b-070e487a2eb8</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>06_RememberPropertyPatternComplete</OutputName>
+    <OutputName>07_InstallerWithMyCSharpCustomAction</OutputName>
     <OutputType>Package</OutputType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -20,21 +20,25 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <SuppressIces>ICE03</SuppressIces>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="InstallationStages.wxi" />
-    <None Include="MyAppendScript.ps1" />
+    <None Include="FileToInstall.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <WixExtension Include="WixUtilExtension">
-      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
-      <Name>WixUtilExtension</Name>
-    </WixExtension>
+    <ProjectReference Include="..\07_MyCSharpCustomAction\07_MyCSharpCustomAction.csproj">
+      <Name>07_MyCSharpCustomAction</Name>
+      <Project>{0883c3c0-77e2-4217-a0b4-b09b5d444f5d}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>MY_INSTALL_LOCATION</RefTargetDir>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
@@ -45,7 +49,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\WiX.3.11.2\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WiX.3.11.2\build\wix.props'))" />
+    <Error Condition="!Exists('..\..\packages\WiX.3.11.2\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\WiX.3.11.2\build\wix.props'))" />
   </Target>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

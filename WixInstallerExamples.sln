@@ -15,6 +15,13 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "05_RememberPropertyPattern"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "06_RememberPropertyPatternComplete", "06_RememberPropertyPatternComplete\06_RememberPropertyPatternComplete.wixproj", "{0D8125DC-3768-4A5B-ABC4-AEA32D977084}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_MyCSharpCustomAction", "07_CSharpCustomAction\07_MyCSharpCustomAction\07_MyCSharpCustomAction.csproj", "{0883C3C0-77E2-4217-A0B4-B09B5D444F5D}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "07_InstallerWithMyCSharpCustomAction", "07_CSharpCustomAction\07_InstallerWithMyCSharpCustomAction\07_InstallerWithMyCSharpCustomAction.wixproj", "{B2F847DB-D7B0-4A8A-BC5B-070E487A2EB8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0883C3C0-77E2-4217-A0B4-B09B5D444F5D} = {0883C3C0-77E2-4217-A0B4-B09B5D444F5D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +68,18 @@ Global
 		{0D8125DC-3768-4A5B-ABC4-AEA32D977084}.Release|x64.ActiveCfg = Release|x86
 		{0D8125DC-3768-4A5B-ABC4-AEA32D977084}.Release|x86.ActiveCfg = Release|x86
 		{0D8125DC-3768-4A5B-ABC4-AEA32D977084}.Release|x86.Build.0 = Release|x86
+		{0883C3C0-77E2-4217-A0B4-B09B5D444F5D}.Debug|x64.ActiveCfg = Debug|x86
+		{0883C3C0-77E2-4217-A0B4-B09B5D444F5D}.Debug|x86.ActiveCfg = Debug|x86
+		{0883C3C0-77E2-4217-A0B4-B09B5D444F5D}.Debug|x86.Build.0 = Debug|x86
+		{0883C3C0-77E2-4217-A0B4-B09B5D444F5D}.Release|x64.ActiveCfg = Release|x86
+		{0883C3C0-77E2-4217-A0B4-B09B5D444F5D}.Release|x86.ActiveCfg = Release|x86
+		{0883C3C0-77E2-4217-A0B4-B09B5D444F5D}.Release|x86.Build.0 = Release|x86
+		{B2F847DB-D7B0-4A8A-BC5B-070E487A2EB8}.Debug|x64.ActiveCfg = Debug|x86
+		{B2F847DB-D7B0-4A8A-BC5B-070E487A2EB8}.Debug|x86.ActiveCfg = Debug|x86
+		{B2F847DB-D7B0-4A8A-BC5B-070E487A2EB8}.Debug|x86.Build.0 = Debug|x86
+		{B2F847DB-D7B0-4A8A-BC5B-070E487A2EB8}.Release|x64.ActiveCfg = Release|x86
+		{B2F847DB-D7B0-4A8A-BC5B-070E487A2EB8}.Release|x86.ActiveCfg = Release|x86
+		{B2F847DB-D7B0-4A8A-BC5B-070E487A2EB8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
