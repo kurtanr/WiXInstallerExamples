@@ -54,10 +54,10 @@ Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/
 |[05_RememberPropertyPattern](05_RememberPropertyPattern/) | - implementation of ["Remember Property" pattern](https://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)</br>- example of how to define custom actions that execute only during upgrade/repair/uninstall</br>- these actions are accessing properties set during the initial installation |
 |[06_RememberPropertyPatternComplete](06_RememberPropertyPatternComplete/) | - modification of the previous example to additionally support changing of property values during upgrade |
 |[07_CSharpCustomAction](07_CSharpCustomAction/) | - example of C# code executed as a custom action during installation (immediate and deferred) |
+|[08_CppCustomAction](08_CppCustomAction/) | - example of C++ code executed as a custom action during installation (immediate and deferred) |
 
 ## TODO: Planned examples
 
-- executing C++ installer actions
 - adding UI
 </br>
 
