@@ -1,0 +1,5 @@
+LIBRARY "08_MyCppCustomAction"
+
+EXPORTS
+	MyImmediateCustomAction
+	MyDeferredCustomAction
