@@ -15,7 +15,6 @@
 
     <?include InstallationStages.wxi?>
 
-    <UIRef Id="WixUI_InstallDir" />
     <Property Id="WIXUI_INSTALLDIR" Value="MY_INSTALL_LOCATION" />
 
     <Property Id="POWERSHELLVERSION">
@@ -137,6 +136,15 @@
       <Custom Action='CA_AppendTextUsingPowerShell_Uninstalling' Before='RemoveFiles'>Uninstalling</Custom>
       <Custom Action='CA_AppendTextUsingPowerShell_Maintenance' Before='InstallFinalize'>Maintenance</Custom>
     </InstallExecuteSequence>
+
+    <UI Id="MyWixUI_InstallDir">
+      <UIRef Id="WixUI_InstallDir" />
+
+      <DialogRef Id="MyCustomPropertiesDlg" />
+
+      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="MyCustomPropertiesDlg" Order="4">WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID="1"</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MyCustomPropertiesDlg" Order="1">1</Publish>
+    </UI>
 
     <Feature Id="HelloWorldFeature">
       <ComponentGroupRef Id="ProductComponentGroup" />
