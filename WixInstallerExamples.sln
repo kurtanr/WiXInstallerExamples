@@ -29,6 +29,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "08_InstallerWithMyCppCustom
 		{30CC6170-3C69-4D9C-ABF8-1B635929CEBB} = {30CC6170-3C69-4D9C-ABF8-1B635929CEBB}
 	EndProjectSection
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "09_InstallerWithUserInterface", "09_InstallerWithUserInterface\09_InstallerWithUserInterface.wixproj", "{59629FFA-80F8-42F7-832F-5BE06C4C09FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -99,6 +101,12 @@ Global
 		{C0AC9DD6-7109-405F-8D4C-26489865AD10}.Release|x64.ActiveCfg = Release|x86
 		{C0AC9DD6-7109-405F-8D4C-26489865AD10}.Release|x86.ActiveCfg = Release|x86
 		{C0AC9DD6-7109-405F-8D4C-26489865AD10}.Release|x86.Build.0 = Release|x86
+		{59629FFA-80F8-42F7-832F-5BE06C4C09FA}.Debug|x64.ActiveCfg = Debug|x86
+		{59629FFA-80F8-42F7-832F-5BE06C4C09FA}.Debug|x86.ActiveCfg = Debug|x86
+		{59629FFA-80F8-42F7-832F-5BE06C4C09FA}.Debug|x86.Build.0 = Debug|x86
+		{59629FFA-80F8-42F7-832F-5BE06C4C09FA}.Release|x64.ActiveCfg = Release|x86
+		{59629FFA-80F8-42F7-832F-5BE06C4C09FA}.Release|x86.ActiveCfg = Release|x86
+		{59629FFA-80F8-42F7-832F-5BE06C4C09FA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
