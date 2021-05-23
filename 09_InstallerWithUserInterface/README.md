@@ -42,3 +42,16 @@ And this is how the end dialog looks like:
 <p align="left">
     <img src="../images/MyCustomPropertiesDlg.png" alt="MyCustomPropertiesDlg" style="max-width:100%;">
 </p>
+
+## Customizing Built-in WixUI Dialog Sets
+
+[This page](https://github.com/wixtoolset/wix3/blob/develop/src/chm/documents/wixui/WixUI_customizations.html.md) describes how to customize the following aspects of built-in WixUI dialog sets:
+- Specifying a product-specific license agreement file.
+- Specifying product-specific setup UI bitmaps.
+- Adding an optional checkbox and optional text to the ExitDlg.
+- Customizing the text displayed in built-in dialogs.
+- Changing the UI sequence of a built-in dialog set.
+- Inserting a custom dialog into a built-in dialog set.
+
+More details on specifying product-specific setup UI bitmaps can be found [here](https://www.firegiant.com/wix/tutorial/user-interface/ui-wizardry/).\
+Default bitmaps are available [here](https://github.com/wixtoolset/wix3/tree/develop/src/ext/UIExtension/wixlib/Bitmaps).
