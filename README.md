@@ -55,7 +55,8 @@ Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/
 |[06_RememberPropertyPatternComplete](06_RememberPropertyPatternComplete/) | - modification of the previous example to additionally support changing of property values during upgrade |
 |[07_CSharpCustomAction](07_CSharpCustomAction/) | - example of C# code executed as a custom action during installation (immediate and deferred) |
 |[08_CppCustomAction](08_CppCustomAction/) | - example of C++ code executed as a custom action during installation (immediate and deferred) |
-|[09_InstallerWithUserInterface](09_InstallerWithUserInterface) | - example of an installer with a user interface</br>- user is able to choose install location and set value of a custom property |
+|[09_InstallerWithUserInterface](09_InstallerWithUserInterface/) | - example of an installer with a user interface</br>- user is able to choose install location and set value of a custom property |
+|[10_ASP.NET_Core5_WeatherForecastInstaller](10_ASP.NET_Core5_WeatherForecastInstaller/) | - example of installer for ASP.NET Core 5 web application</br>- example of installer which is deploying the web application in Kestrel and in IIS |
 </br>
 
 ## Additional reading
