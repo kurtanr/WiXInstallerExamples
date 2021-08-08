@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>_10_WeatherForecast</RootNamespace>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Language="1033"
+           Manufacturer="Acme Corporation"
+           Name="10_WeatherForecastInstaller"
+           UpgradeCode="{759305A4-6D58-44F7-9273-94F376DF0F77}"
+           Version="1.0.0.0">
+
+    <Package InstallScope="perMachine" InstallerVersion="200" Compressed="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <!--
+    Interesting note:
+    - even with Win64="yes" this RegistrySearch in 32-bit installer will always read the key from:
+      SOFTWARE\WOW6432Node\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell (note the WOW6432Node in path)
+    - that registry key points to 32-bit version of PowerShell located (most likely) at:
+      C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+    - SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell points to 64-bit version of PowerShell which is (most likely) at:
+      C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    - there is a difference in what a 32-bit PowerShell and 64-bit PowerShell can execute
+    - this is visible when trying to execute the SetAppPoolManagedRuntimeVersion.ps1 script in CA_SetAppPoolManagedRuntimeVersion (line 60)
+    - if that custom action uses 32-bit PowerShell, execution fails with the following message:
+      "Retrieving the COM class factory for component with CLSID {688EEEE5-6A7E-422F-B2E1-6AF00DC944A6} failed due to the following error: 80040154 Class not registered"
+    - similar issue is described here: https://stackoverflow.com/a/6872000/15770755
+    - this is not related to WiX, but with the inability to use WebAdministration module from a 32-bit PowerShell
+    - as a solution to the problem, line 63 directly references the 64-bit version of PowerShell
+    -->
+    <Property Id="POWERSHELLEXE">
+      <RegistrySearch Id="POWERSHELLEXE"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell"
+                      Name="Path"
+                      Win64="yes" />
+    </Property>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MY_INSTALL_LOCATION" Name="10_WeatherForecastInstaller" />
+      </Directory>
+    </Directory>
+
+    <ComponentGroup Directory="MY_INSTALL_LOCATION" Id="ProductComponents">
+      <Component Id="cmpSetAppPoolManagedRuntimeVersion_ps1" Guid="*">
+        <File Id="SetAppPoolManagedRuntimeVersion_ps1" KeyPath="yes" Source="SetAppPoolManagedRuntimeVersion.ps1" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="HelloWorldFeature">
+      <ComponentGroupRef Id="WeatherForecastGroup" />
+      <ComponentGroupRef Id="ProductIISHostingComponents" />
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+
+    <!--For details see: https://github.com/wixtoolset/issues/issues/5226#issuecomment-338707545 -->
+    <SetProperty Id="CA_SetAppPoolManagedRuntimeVersion"
+                 Before ="CA_SetAppPoolManagedRuntimeVersion"
+                 Sequence="execute"
+                 Value='&quot;[WindowsFolder]\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoLogo -NonInteractive -NoProfile -ExecutionPolicy Bypass -File "[MY_INSTALL_LOCATION]SetAppPoolManagedRuntimeVersion.ps1"' />
+
+    <CustomAction Id="CA_SetAppPoolManagedRuntimeVersion" BinaryKey="WixCA" DllEntry="CAQuietExec64" Execute="deferred" Return="check" Impersonate="no" />
+
+    <!--For details see: https://stackoverflow.com/a/58451486 -->
+    <SetProperty Id="CA_SetAppPoolPermission"
+                 Before ="CA_SetAppPoolPermission"
+                 Sequence="execute"
+                 Value='"[SystemFolder]icacls.exe" "[MY_INSTALL_LOCATION]." /grant "IIS AppPool\WeatherForecastAppPool:(OI)(CI)F" /T' />
+
+    <CustomAction Id="CA_SetAppPoolPermission" BinaryKey="WixCA" DllEntry="CAQuietExec64" Execute="deferred" Return="check" Impersonate="no" />
+
+    <InstallExecuteSequence>
+      <Custom Action='CA_SetAppPoolManagedRuntimeVersion' Before='InstallFinalize'>NOT Installed</Custom>
+      <Custom Action='CA_SetAppPoolPermission' After='CA_SetAppPoolManagedRuntimeVersion'>NOT Installed</Custom>
+    </InstallExecuteSequence>
+  </Product>
+</Wix>

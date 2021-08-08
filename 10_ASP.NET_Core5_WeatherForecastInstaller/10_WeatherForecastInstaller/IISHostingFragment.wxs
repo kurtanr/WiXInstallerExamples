@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
+  <Fragment>
+
+    <!--
+      Nesting WebSite under Product, Fragment, or Module results in a web site "locator" record being 
+      created in the IIsWebSite table. This means that the web site itself is neither installed nor 
+      uninstalled by the MSI package. It does make the database available for referencing from a WebApplication, 
+      WebVirtualDir or WebDir record. This allows an MSI to install WebApplications, WebVirtualDirs or WebDirs to 
+      already existing web sites on the machine.
+      The install will fail if the web site does not exist in these cases. 
+      More details here: https://wixtoolset.org/documentation/manual/v3/xsd/iis/website.html
+    -->
+    <iis:WebSite Id="WeatherForecastWebSite" Description="Default Web Site">
+      <iis:WebAddress Id="WebAddress_DefaultWebSite" Port="80" />
+    </iis:WebSite>
+
+    <ComponentGroup Directory="MY_INSTALL_LOCATION" Id="ProductIISHostingComponents">
+      <!--AppPool-->
+      <Component Id="cmpAppPool" Guid="{E6F56DF0-8089-4FEB-89CC-EAA49F1BFCE7}" KeyPath="yes">
+        <iis:WebAppPool Id="WeatherForecastAppPool"
+                        Name="WeatherForecastAppPool"
+                        ManagedRuntimeVersion="v4.0"
+                        ManagedPipelineMode="Integrated"
+                        Identity="applicationPoolIdentity" />
+      </Component>
+
+      <Component Id="cmpWebVirtualDir" Guid="{81C92868-A718-4F3C-B1B8-CC4EC5E5A1DB}" KeyPath="yes">
+        <iis:WebVirtualDir Id="WebVirtualDir_WeatherForecast"
+                           Alias="WeatherForecastWebApp"
+                           Directory="MY_INSTALL_LOCATION"
+                           WebSite="WeatherForecastWebSite">
+          <iis:WebApplication Id="WebApplication_WeatherForecast"
+                              Name="WeatherForecastWebApplication"
+                              WebAppPool="WeatherForecastAppPool" />
+        </iis:WebVirtualDir>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
