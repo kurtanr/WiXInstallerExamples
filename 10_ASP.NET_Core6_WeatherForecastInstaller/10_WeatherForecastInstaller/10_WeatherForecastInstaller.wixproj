@@ -15,14 +15,14 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Debug;InstallerSource=..\10_WeatherForecast\bin\$(Configuration)\net5.0\win-x86\publish</DefineConstants>
+    <DefineConstants>Debug;InstallerSource=..\10_WeatherForecast\bin\$(Configuration)\net6.0\win-x86\publish</DefineConstants>
     <WixVariables>
     </WixVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>InstallerSource=..\10_WeatherForecast\bin\$(Configuration)\net5.0\win-x86\publish</DefineConstants>
+    <DefineConstants>InstallerSource=..\10_WeatherForecast\bin\$(Configuration)\net6.0\win-x86\publish</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IISHostingFragment.wxs" />
@@ -56,7 +56,7 @@
   <PropertyGroup>
     <PreBuildEvent>dotnet publish $(ProjectDir)..\10_WeatherForecast\10_WeatherForecast.csproj -c $(ConfigurationName) --self-contained true -r win-x86
 
-$(ProjectDir)..\..\packages\WiX.3.11.2\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net5.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource</PreBuildEvent>
+$(ProjectDir)..\..\packages\WiX.3.11.2\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource</PreBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
