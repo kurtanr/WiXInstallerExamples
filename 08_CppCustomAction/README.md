@@ -77,7 +77,7 @@ MyDeferredCustomAction:  CustomActionData value in MyDeferredCustomAction = 'MY_
 
 ## Debugging custom actions
 
-See [here](http://windows-installer-xml-wix-toolset.687559.n2.nabble.com/Debugging-C-Custom-Actions-tp1083984p1084634.html) and [here](https://docs.microsoft.com/en-us/windows/win32/msi/debugging-custom-actions) for details on how to debug C++ custom actions.
+See [here](https://stackoverflow.com/a/52880033/15770755) and [here](https://docs.microsoft.com/en-us/windows/win32/msi/debugging-custom-actions) for details on how to debug C++ custom actions.
 
 ## How are custom actions scheduled?
 
