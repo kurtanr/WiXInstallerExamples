@@ -31,7 +31,7 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "08_InstallerWithMyCppCustom
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "09_InstallerWithUserInterface", "09_InstallerWithUserInterface\09_InstallerWithUserInterface.wixproj", "{59629FFA-80F8-42F7-832F-5BE06C4C09FA}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "10_WeatherForecastInstaller", "10_ASP.NET_Core5_WeatherForecastInstaller\10_WeatherForecastInstaller\10_WeatherForecastInstaller.wixproj", "{D087894E-9C4A-4891-9FF2-06B2DF4243D8}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "10_WeatherForecastInstaller", "10_ASP.NET_Core6_WeatherForecastInstaller\10_WeatherForecastInstaller\10_WeatherForecastInstaller.wixproj", "{D087894E-9C4A-4891-9FF2-06B2DF4243D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
