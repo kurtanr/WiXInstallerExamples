@@ -1,10 +1,10 @@
-# 10_ASP.NET_Core5_WeatherForecastInstaller
+# 10_ASP.NET_Core6_WeatherForecastInstaller
 
 ## Prerequisites
 
-A prerequisite for building the "10_WeatherForecastInstaller" project is that [dotnet 5](https://dotnet.microsoft.com/download/dotnet/5.0) is installed.</br>
+A prerequisite for building the "10_WeatherForecastInstaller" project is that [dotnet 6](https://dotnet.microsoft.com/download/dotnet/6.0) is installed.</br>
 Prerequisite for installing the created installer is that:
-- ASP.NET Core Runtime [Windows Hosting bundle](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-aspnetcore-5.0.8-windows-hosting-bundle-installer) is installed
+- ASP.NET Core Runtime [Windows Hosting bundle](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-aspnetcore-6.0.0-windows-hosting-bundle-installer) is installed
 - IIS is installed on the machine where the installer is running
 - IIS has a website called "Default Web Site"
 
@@ -45,7 +45,7 @@ The publish command is creating a [self-contained](https://docs.microsoft.com/en
 
 The following statement harvests the WeatherForecast web application publish folder using heat.exe:
 ```
-$(ProjectDir)..\..\packages\WiX.3.11.2\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net5.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource
+$(ProjectDir)..\..\packages\WiX.3.11.2\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource
 ```
 
 | Argument | Description |
@@ -61,7 +61,7 @@ $(ProjectDir)..\..\packages\WiX.3.11.2\tools\heat.exe dir $(ProjectDir)..\10_Wea
 
 In installer project build properties, an InstallerSource preprocessor variable is defined like this:
 ```
-InstallerSource=..\10_WeatherForecast\bin\$(Configuration)\net5.0\win-x86\publish
+InstallerSource=..\10_WeatherForecast\bin\$(Configuration)\net6.0\win-x86\publish
 ```
 $(ProjectDir) and $(ConfigurationName) used in the harvesting command line are [common macros for MSBuild](https://docs.microsoft.com/en-us/cpp/build/reference/common-macros-for-build-commands-and-properties).
 
@@ -101,6 +101,7 @@ A user under which the web application is running in IIS by default does not hav
 
 With the changes done in the previous section, the WeatherForecast web application can be successfully installed in IIS.</br>
 The WeatherForecast endpoint will be available at:
+- http://localhost/weatherforecastwebapp/weatherforecast/
 - https://localhost/weatherforecastwebapp/weatherforecast/
 
 Note: port and protocol depend on "Default Web Site" bindings.
