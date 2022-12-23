@@ -37,7 +37,7 @@ Definition of the [UI element](https://wixtoolset.org/documentation/manual/v3/xs
 ## Creating custom dialog
 
 [MyCustomPropertiesDlg](MyCustomPropertiesDlg.wxs) is created based on [this sample](https://www.firegiant.com/system/files/samples/SampleWixUIAddDlg.zip) which is available [here](https://www.firegiant.com/wix/tutorial/user-interface/new-link-in-the-chain/).\
-And this is how the end dialog looks like:
+And this is what the end dialog looks like:
 
 <p align="left">
     <img src="../images/MyCustomPropertiesDlg.png" alt="MyCustomPropertiesDlg" style="max-width:100%;">

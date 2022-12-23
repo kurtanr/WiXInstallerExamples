@@ -6,8 +6,8 @@
 WiX (Windows Installer XML) is a framework that lets developers create installers (MSIs) for Windows.\
 The Repository contains multiple sample installers which demonstrate how to achieve various tasks using WiX.\
 Examples use version 3.11.2 of WiX.
-</br>
-</br>
+<br/>
+<br/>
 
 ## How to get WiX
 
@@ -27,7 +27,7 @@ Download [NuGet package](https://www.nuget.org/packages/WiX/):
 ```
 Install-Package WiX
 ```
-</br>
+<br/>
 
 ## How to build installers using WiX
 
@@ -39,25 +39,25 @@ There are several options for building a WiX project on a machine that does not 
 One of them is described here: [Integrating WiX Projects Into Daily Builds](https://wixtoolset.org/documentation/manual/v3/msbuild/daily_builds.html)\
 Another is to simply use the [WiX NuGet package](https://www.nuget.org/packages/WiX/) 
 (this is what all projects from [01_HelloWorldInstallerUpgradable](01_HelloWorldInstallerUpgradable/) onward use).
-</br>
-</br>
+<br/>
+<br/>
 
 ## List of example projects
 
 |Project/folder name | Description |
 |--------------------|-------------|
-|[00_HelloWorldInstaller](00_HelloWorldInstaller/) | - minimum installer, not upgradable</br>- does not use [wixproj](https://wixtoolset.org/documentation/manual/v3/msbuild/authoring_first_msbuild_project.html) |
-|[01_HelloWorldInstallerUpgradable](01_HelloWorldInstallerUpgradable/) | - minimum installer, upgradable, no ICE warnings</br>- uses wixproj |
-|[02_x86_x64_Installer](02_x86_x64_Installer/) | - single wxs file used for building x86 and x64 MSI</br>- x86 and x64 MSI deploy different files and write to different registry locations |
-|[03_PassingInstallLocationParameterToInstaller](03_PassingInstallLocationParameterToInstaller/) | - passing parameters to installer using msiexec</br>- analyzing installation log and using the Orca MSI Editor |
-|[04_PowerShellPreconditionCustomAction](04_PowerShellPreconditionCustomAction/) | - checking precondition for installation (is PowerShell installed)</br>- overview of install stages</br>- executing PowerShell script as a custom action |
-|[05_RememberPropertyPattern](05_RememberPropertyPattern/) | - implementation of ["Remember Property" pattern](https://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)</br>- example of how to define custom actions that execute only during upgrade/repair/uninstall</br>- these actions are accessing properties set during the initial installation |
+|[00_HelloWorldInstaller](00_HelloWorldInstaller/) | - minimum installer, not upgradable<br/>- does not use [wixproj](https://wixtoolset.org/documentation/manual/v3/msbuild/authoring_first_msbuild_project.html) |
+|[01_HelloWorldInstallerUpgradable](01_HelloWorldInstallerUpgradable/) | - minimum installer, upgradable, no ICE warnings<br/>- uses wixproj |
+|[02_x86_x64_Installer](02_x86_x64_Installer/) | - single wxs file used for building x86 and x64 MSI<br/>- x86 and x64 MSI deploy different files and write to different registry locations |
+|[03_PassingInstallLocationParameterToInstaller](03_PassingInstallLocationParameterToInstaller/) | - passing parameters to installer using msiexec<br/>- analyzing installation log and using the Orca MSI Editor |
+|[04_PowerShellPreconditionCustomAction](04_PowerShellPreconditionCustomAction/) | - checking precondition for installation (is PowerShell installed)<br/>- overview of install stages<br/>- executing PowerShell script as a custom action |
+|[05_RememberPropertyPattern](05_RememberPropertyPattern/) | - implementation of ["Remember Property" pattern](https://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)<br/>- example of how to define custom actions that execute only during upgrade/repair/uninstall<br/>- these actions are accessing properties set during the initial installation |
 |[06_RememberPropertyPatternComplete](06_RememberPropertyPatternComplete/) | - modification of the previous example to additionally support changing of property values during upgrade |
 |[07_CSharpCustomAction](07_CSharpCustomAction/) | - example of C# code executed as a custom action during installation (immediate and deferred) |
 |[08_CppCustomAction](08_CppCustomAction/) | - example of C++ code executed as a custom action during installation (immediate and deferred) |
-|[09_InstallerWithUserInterface](09_InstallerWithUserInterface/) | - example of an installer with a user interface</br>- user is able to choose install location and set value of a custom property |
-|[10_ASP.NET_Core6_WeatherForecastInstaller](10_ASP.NET_Core6_WeatherForecastInstaller/) | - example of installer for ASP.NET Core 6 web application</br>- example of installer which is deploying the web application in Kestrel and in IIS |
-</br>
+|[09_InstallerWithUserInterface](09_InstallerWithUserInterface/) | - example of an installer with a user interface<br/>- user is able to choose install location and set value of a custom property |
+|[10_ASP.NET_Core6_WeatherForecastInstaller](10_ASP.NET_Core6_WeatherForecastInstaller/) | - example of installer for ASP.NET Core 6 web application<br/>- example of installer which is deploying the web application in Kestrel and in IIS |
+<br/>
 
 ## Additional reading
 

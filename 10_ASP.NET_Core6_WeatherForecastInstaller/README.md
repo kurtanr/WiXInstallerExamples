@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-A prerequisite for building the "10_WeatherForecastInstaller" project is that [dotnet 6](https://dotnet.microsoft.com/download/dotnet/6.0) is installed.</br>
+A prerequisite for building the "10_WeatherForecastInstaller" project is that [dotnet 6](https://dotnet.microsoft.com/download/dotnet/6.0) is installed.<br/>
 Prerequisite for installing the created installer is that:
 - ASP.NET Core Runtime [Windows Hosting bundle](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-aspnetcore-6.0.0-windows-hosting-bundle-installer) is installed
 - IIS is installed on the machine where the installer is running
@@ -15,14 +15,14 @@ The web application that will be deployed by the installer is the template "ASP.
     <img src="../images/WeatherForecastProjectTemplate.png" alt="ASP.NET Core Web API project template" style="max-width:100%;">
 </p>
 
-Web application project is not part of the solution but is instead built, published, and harvested during the pre-build event of the "10_WeatherForecastInstaller" project.</br>
-The only change done to the web application is the one that enables the project to be hosted in IIS.</br>
+Web application project is not part of the solution but is instead built, published, and harvested during the pre-build event of the "10_WeatherForecastInstaller" project.<br/>
+The only change done to the web application is the one that enables the project to be hosted in IIS.<br/>
 Namely, the following line was added to the CreateHostBuilder method in Program.cs:
 ```C#
 webBuilder.UseIIS();
 ```
-Note that there is also the `webBuilder.UseIISIntegration()` method which should be used for out-of-process hosting.</br>
-Since we are using in-process hosting, we are using the UseIIS method</br>
+Note that there is also the `webBuilder.UseIISIntegration()` method which should be used for out-of-process hosting.<br/>
+Since we are using in-process hosting, we are using the UseIIS method<br/>
 For more details about the two methods [see here](https://stackoverflow.com/a/55683314/15770755).
 
 ## Building and publishing WeatherForecast web application
@@ -84,22 +84,22 @@ To host the web application in IIS, the installer needs to:
   - created WebApplication is created under the website previously mentioned
   - created WebApplication uses the previously created Application pool
 
-All of the steps are implemented in the file [IISHostingFragment.wxs](10_WeatherForecastInstaller/IISHostingFragment.wxs).</br>
+All of the steps are implemented in the file [IISHostingFragment.wxs](10_WeatherForecastInstaller/IISHostingFragment.wxs).<br/>
 One interesting point is that the installer is not creating a new website (nor deleting it on uninstall), but is instead expecting that a website named "Default Web Site" already exists. This is done by placing the [WebSite Wix element](https://wixtoolset.org/documentation/manual/v3/xsd/iis/website.html) under a Fragment. More details on that are in the linked wxs file.
 
 Two additional changes are needed in the installer code to handle two specific issues.
 
-### Seting AppPool ManagedRuntimeVersion
+### Setting AppPool ManagedRuntimeVersion
 
 Because of an open issue in WiX, it is not possible to set the IIS Application Pool ManagedRuntimeVersion to "No Managed Code", which is the value that is preferred for ApplicationPools running .NET Core web applications. A workaround for that is a custom action that sets the correct ManagedRuntimeVersion using a [PowerShell script](10_WeatherForecastInstaller/SetAppPoolManagedRuntimeVersion.ps1). Details about the open issue and the workaround can be found [here](https://github.com/wixtoolset/issues/issues/5226#issuecomment-338707545).
 
 ### Granting write permission to web application for writing log files
 
-A user under which the web application is running in IIS by default does not have write permission to the location where the web application files are deployed. And since that is the default location where IIS is writing the log file (as specified in web.config), the startup of the application will fail if logging is enabled. The [following custom action](https://stackoverflow.com/a/58451486) is used to grand FullAccess rights to the installation folder for the user under which the web application is running in IIS.
+A user under which the web application is running in IIS by default does not have write permission to the location where the web application files are deployed. And since that is the default location where IIS is writing the log file (as specified in web.config), the startup of the application will fail if logging is enabled. The [following custom action](https://stackoverflow.com/a/58451486) is used to grant FullAccess rights to the installation folder for the user under which the web application is running in IIS.
 
 ## Running installed WeatherForecast web application using IIS
 
-With the changes done in the previous section, the WeatherForecast web application can be successfully installed in IIS.</br>
+With the changes done in the previous section, the WeatherForecast web application can be successfully installed in IIS.<br/>
 The WeatherForecast endpoint will be available at:
 - http://localhost/weatherforecastwebapp/weatherforecast/
 - https://localhost/weatherforecastwebapp/weatherforecast/

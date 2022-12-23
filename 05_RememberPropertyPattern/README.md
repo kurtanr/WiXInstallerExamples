@@ -116,5 +116,5 @@ MSI (c) (C8:EC) [11:00:10:208]: PROPERTY CHANGE: Modifying MY_PROPERTY property.
 ...
 Property(N): MY_PROPERTY = my_value
 ```
-The current simple solution for remembering property values (which has this problem) might be enough for most of the installers.\
+The current simple solution for remembering property values (which has this problem) might be enough for most installers.\
 If not, the [next example](../06_RememberPropertyPatternComplete/) fixes this issue with a full implementation of the "Remember Property" pattern.

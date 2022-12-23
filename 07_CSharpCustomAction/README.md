@@ -145,7 +145,7 @@ Deferred custom action has:
                   BinaryKey="CustomActions" Execute="deferred" DllEntry="MyDeferredCustomAction" />
 ```
 
-Aditionally, deferred custom action requires another custom action to pass property values to the deferred stage (to CustomActionData):
+Additionally, deferred custom action requires another custom action to pass property values to the deferred stage (to CustomActionData):
 ```xml
     <!--
     This CA is passing property values to the session.CustomActionData.

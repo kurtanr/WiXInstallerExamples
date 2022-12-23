@@ -16,7 +16,7 @@ Retrieved value is assigned to a property:
                       Name="PowerShellVersion" />
     </Property>
 ```
-Aditionally, location of PowerShell.exe is also assigned to a property:
+Additionally, location of PowerShell.exe is also assigned to a property:
 ```xml
     <Property Id="POWERSHELLEXE">
       <RegistrySearch Id="POWERSHELLEXE"
@@ -142,7 +142,7 @@ If the installation is executed with logging enabled, we can see from the log fi
 - custom actions are executed during the "server-side" of the installation
 - custom actions are executed in the deferred part, between *InstallFiles* and *WriteRegistryValues*
 - SetCA_AppendTextUsingPowerShell custom action successfully sets the command line
-- CA_AppendTextUsingPowerShell custom action successfully executed.</br>This is represented as [return value 1](https://docs.microsoft.com/en-us/windows/win32/msi/logging-of-action-return-values) in the log file.</br>If custom action fails to execute, usually [value 3](https://robmensching.com/blog/posts/2010/8/2/the-first-thing-i-do-with-an-msi-log/) is returned (and MsiExec error code 1603).
+- CA_AppendTextUsingPowerShell custom action successfully executed.<br/>This is represented as [return value 1](https://docs.microsoft.com/en-us/windows/win32/msi/logging-of-action-return-values) in the log file.<br/>If custom action fails to execute, usually [value 3](https://robmensching.com/blog/posts/2010/8/2/the-first-thing-i-do-with-an-msi-log/) is returned (and MsiExec error code 1603).
 ```
 MSI (s) (F8:00) [22:09:41:191]: BeginTransaction: Locking Server
 ...

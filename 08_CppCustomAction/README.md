@@ -1,4 +1,4 @@
-# 07_CSharpCustomAction
+# 08_CppCustomAction
 
 ## Creating custom action project
 
