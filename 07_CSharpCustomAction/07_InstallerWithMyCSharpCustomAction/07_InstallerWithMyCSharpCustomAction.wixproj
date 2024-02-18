@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\WiX.3.11.2\build\wix.props" Condition="Exists('..\..\packages\WiX.3.11.2\build\wix.props')" />
+  <Import Project="..\..\packages\wix.3.14.0\build\wix.props" Condition="Exists('..\..\packages\wix.3.14.0\build\wix.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -28,9 +28,6 @@
     <None Include="FileToInstall.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\07_MyCSharpCustomAction\07_MyCSharpCustomAction.csproj">
       <Name>07_MyCSharpCustomAction</Name>
       <Project>{0883c3c0-77e2-4217-a0b4-b09b5d444f5d}</Project>
@@ -39,6 +36,9 @@
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>MY_INSTALL_LOCATION</RefTargetDir>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
@@ -49,7 +49,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\WiX.3.11.2\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\WiX.3.11.2\build\wix.props'))" />
+    <Error Condition="!Exists('..\..\packages\wix.3.14.0\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\wix.3.14.0\build\wix.props'))" />
   </Target>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
