@@ -4,7 +4,7 @@
 
 A prerequisite for building the "10_WeatherForecastInstaller" project is that [dotnet 6](https://dotnet.microsoft.com/download/dotnet/6.0) is installed.<br/>
 Prerequisite for installing the created installer is that:
-- ASP.NET Core Runtime [Windows Hosting bundle](https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-aspnetcore-6.0.0-windows-hosting-bundle-installer) is installed
+- ASP.NET Core Runtime [Windows Hosting bundle](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-6.0.27-windows-hosting-bundle-installer) is installed
 - IIS is installed on the machine where the installer is running
 - IIS has a website called "Default Web Site"
 
@@ -45,7 +45,7 @@ The publish command is creating a [self-contained](https://docs.microsoft.com/en
 
 The following statement harvests the WeatherForecast web application publish folder using heat.exe:
 ```
-$(ProjectDir)..\..\packages\WiX.3.11.2\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource
+$(ProjectDir)..\..\packages\wix.3.14.0\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource
 ```
 
 | Argument | Description |

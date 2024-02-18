@@ -5,7 +5,7 @@
 
 WiX (Windows Installer XML) is a framework that lets developers create installers (MSIs) for Windows.\
 The Repository contains multiple sample installers which demonstrate how to achieve various tasks using WiX.\
-Examples use version 3.11.2 of WiX.
+Examples use version 3.14.0 of WiX.
 <br/>
 <br/>
 
@@ -13,8 +13,8 @@ Examples use version 3.11.2 of WiX.
 
 Download binaries using PowerShell from [WiX GitHub](https://github.com/wixtoolset/wix3) (installer is also available):
 ```PowerShell
-$source = 'https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip'
-$destination = Join-Path $PSScriptRoot -ChildPath 'wix311-binaries.zip'
+$source = 'https://github.com/wixtoolset/wix3/releases/download/wix314rtm/wix314-binaries.zip'
+$destination = Join-Path $PSScriptRoot -ChildPath 'wix314-binaries.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
 ```
 
@@ -25,7 +25,7 @@ choco install wixtoolset
 
 Download [NuGet package](https://www.nuget.org/packages/WiX/):
 ```
-Install-Package WiX
+Install-Package wix -Version 3.14.0
 ```
 <br/>
 
