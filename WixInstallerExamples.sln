@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "01_HelloWorldInstallerUpgradable", "01_HelloWorldInstallerUpgradable\01_HelloWorldInstallerUpgradable.wixproj", "{E18CC5FC-F028-48A7-9343-E32A85CDF7B3}"
 EndProject
