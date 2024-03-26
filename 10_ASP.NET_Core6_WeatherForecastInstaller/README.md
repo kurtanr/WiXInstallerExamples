@@ -45,7 +45,7 @@ The publish command is creating a [self-contained](https://docs.microsoft.com/en
 
 The following statement harvests the WeatherForecast web application publish folder using heat.exe:
 ```
-$(ProjectDir)..\..\packages\wix.3.14.0\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource
+$(ProjectDir)..\..\packages\wix.3.14.1\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource
 ```
 
 | Argument | Description |

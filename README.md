@@ -5,7 +5,7 @@
 
 WiX (Windows Installer XML) is a framework that lets developers create installers (MSIs) for Windows.\
 The Repository contains multiple sample installers which demonstrate how to achieve various tasks using WiX.\
-Examples use version 3.14.0 of WiX.
+Examples use version 3.14.1 of WiX.
 <br/>
 <br/>
 
@@ -25,7 +25,7 @@ choco install wixtoolset
 
 Download [NuGet package](https://www.nuget.org/packages/WiX/):
 ```
-Install-Package wix -Version 3.14.0
+Install-Package wix -Version 3.14.1
 ```
 <br/>
 

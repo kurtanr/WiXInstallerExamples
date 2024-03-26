@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" InitialTargets="EnsureWixToolsetInstalled" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\wix.3.14.0\build\wix.props" Condition="Exists('..\..\packages\wix.3.14.0\build\wix.props')" />
+  <Import Project="..\..\packages\wix.3.14.1\build\wix.props" Condition="Exists('..\..\packages\wix.3.14.1\build\wix.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -50,13 +50,13 @@
   <PropertyGroup>
     <PreBuildEvent>dotnet publish $(ProjectDir)..\10_WeatherForecast\10_WeatherForecast.csproj -c $(ConfigurationName) --self-contained true -r win-x86
 
-$(ProjectDir)..\..\packages\wix.3.14.0\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource</PreBuildEvent>
+$(ProjectDir)..\..\packages\wix.3.14.1\tools\heat.exe dir $(ProjectDir)..\10_WeatherForecast\bin\$(ConfigurationName)\net6.0\win-x86\publish -cg WeatherForecastGroup -out $(ProjectDir)WeatherForecastGenerated.wxs -ag -sfrag -srd -sreg -dr MY_INSTALL_LOCATION -var var.InstallerSource</PreBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\wix.3.14.0\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\wix.3.14.0\build\wix.props'))" />
+    <Error Condition="!Exists('..\..\packages\wix.3.14.1\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\wix.3.14.1\build\wix.props'))" />
   </Target>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
