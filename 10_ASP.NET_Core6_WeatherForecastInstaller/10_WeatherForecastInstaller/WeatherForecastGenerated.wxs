@@ -575,8 +575,8 @@
             <Component Id="cmp13B6CCA8E0AEF48D445F299A5CB436E3" Guid="*">
                 <File Id="filFB675EAD8CAF23DCCBD7CE7F9B9252A1" KeyPath="yes" Source="$(var.InstallerSource)\mscordaccore.dll" />
             </Component>
-            <Component Id="cmp7882C1F065522C95A1BC5EED097F623B" Guid="*">
-                <File Id="fil8B44986BCAA2C20250893C74DE54B953" KeyPath="yes" Source="$(var.InstallerSource)\mscordaccore_x86_x86_6.0.2724.6912.dll" />
+            <Component Id="cmpBF20E80F196118B4052A166F5C545096" Guid="*">
+                <File Id="fil4B798BBE2453BED9B2B73A48F97A9DE0" KeyPath="yes" Source="$(var.InstallerSource)\mscordaccore_x86_x86_6.0.2824.12007.dll" />
             </Component>
             <Component Id="cmpF18DA6B46829F6DF2046DF4F990FB804" Guid="*">
                 <File Id="filB2B3415AF794492EDE12CA2313A7C654" KeyPath="yes" Source="$(var.InstallerSource)\mscordbi.dll" />
@@ -1286,7 +1286,7 @@
             <ComponentRef Id="cmpCB2AEC5BE9821B18E5471052F2AD22CC" />
             <ComponentRef Id="cmp24BDAF72941385C0455C6F9E2C621AB9" />
             <ComponentRef Id="cmp13B6CCA8E0AEF48D445F299A5CB436E3" />
-            <ComponentRef Id="cmp7882C1F065522C95A1BC5EED097F623B" />
+            <ComponentRef Id="cmpBF20E80F196118B4052A166F5C545096" />
             <ComponentRef Id="cmpF18DA6B46829F6DF2046DF4F990FB804" />
             <ComponentRef Id="cmpE61087B989E00704C7A99C0E66F4A619" />
             <ComponentRef Id="cmp2BB0B1618E75BFABCF4AEEA7D169B5B2" />
